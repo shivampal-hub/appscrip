@@ -29,4 +29,5 @@
 
     ### Access the Cluster
         Using Output file we get the below command which we use to access our cluster
-        ![kube config output](ss/kube-config-output.png)
+    ![kube-config Output](ss/kube-config-output.png)
+
