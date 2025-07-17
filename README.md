@@ -36,3 +36,27 @@
         kubectl get nodes
 
     ### The Cluster is successfully  created and now we can use it for our deployment.
+
+2. Deploy an NGINX Application using a Kubernetes Manifest
+
+    This project involves deploying nginx application using kubernetes manifests.In our case we would be creating two manifest files:
+    - "nginx-deployment.yaml"
+    - "nginx-service.yaml"
+
+    ![nginx-deployment.yaml](ss/nginx-deployment.png)
+
+    ![nginx-service.yaml](ss/nginx-service.png)
+    ## Since we need to expose our service to the outer world , hence we are using LoadBalancer as a service instead of NodePort
+
+    ### Here , we are using kubectl apply method to create our deployment and thus run the below commands
+        kubectl apply -f nginx-deployment.yaml
+        kubectl apply -f nginx-service.yaml
+
+    ### Now our nginx-deployment will be up and running and exposed with the help of a Load Balancer.
+    ![deployment-output](ss/deployment-output.png)
+
+    ### Use the External-IP in your browser to access the website.
+    ![website-output](ss/website-output.png)
+
+
+### Nginx Application is successfully deployed using Kubernetes Manifest.
