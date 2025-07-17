@@ -34,4 +34,5 @@
 
     ### then verify using below command
         kubectl get nodes
-        
+
+    ### The Cluster is successfully  created and now we can use it for our deployment.
