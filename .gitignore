@@ -1,0 +1,21 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+*.tfvars
+
+# Kubernetes
+*.yaml~
+.kube/
+kubeconfig
+*.log
+
+# General
+.DS_Store
+*.swp
+*.bak
+*.tmp
+.idea/
+.vscode/
+.env
+node_modules/
