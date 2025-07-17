@@ -30,4 +30,8 @@
     ### Access the Cluster
         Using Output file we get the below command which we use to access our cluster
     ![kube-config Output](ss/kube-config-output.png)
+        aws eks update-kubeconfig --region us-east-1 --name eks-cluster-1
 
+    ### then verify using below command
+        kubectl get nodes
+        
