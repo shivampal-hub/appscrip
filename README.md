@@ -65,18 +65,18 @@
     ## Firstly we need to setup and install ARGOCD in our cluster.
     ### Install ArgoCD in the argocd namespace.
 
-        ### Create the argocd namespace
-            kubectl create namespace argocd
+    ### Create the argocd namespace
+        kubectl create namespace argocd
         
-        ### Install ArgoCD using ArgoCD Install manifest:
-            kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-        ### It will install all argocd components.
+    ### Install ArgoCD using ArgoCD Install manifest:
+        kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+    ### It will install all argocd components.
 
-        ### Expose ArgoCD Server with a Load Balancer
-            kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-            kubectl get svc -n argocd
+    ### Expose ArgoCD Server with a Load Balancer
+        kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+        kubectl get svc -n argocd
 
-        ### Use the External-IP of argocd-server.Open https://<external-ip> in your browser.
+    ### Use the External-IP of argocd-server.Open https://<external-ip> in your browser.
         
         ### Get the Initial Admin Password
             kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
@@ -85,8 +85,28 @@
                 username: admin
                 password: vcJLBbpU759hSE2Q
 
-    ![ArgoCD-UI]()
-    
+    ![ArgoCD-UI](ss/argocd-ui.png)
+
+    ### ArgoCD setup is successfully done.
+
+## Now we need to store our kube manifests files in our git repo which we will use to create our application.
+
+### Manifest Files -
+    - "nginx-deployment.yaml"
+    - "nginx-service.yaml"
+
+    git repo - https://github.com/shivampal-hub/kube-manifests
+
+### Now we need to create ArgoCD Application using below Manifest
+
+![nginx-app.yaml](ss/nginx-app.png)
+
+### Apply this using kubectl
+    kubectl apply -f nginx-app.yaml
+
+![](ss/kubectl-output.png)
+![](ss/argocdapp-output.png)
+![](ss/argocdapp-output.png)
 
 
 
