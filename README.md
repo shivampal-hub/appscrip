@@ -60,3 +60,35 @@
 
 
 ### Nginx Application is successfully deployed using Kubernetes Manifest.
+
+3. Set Up ArgoCD on EKS to deploy NGINX application
+    ## Firstly we need to setup and install ARGOCD in our cluster.
+    ### Install ArgoCD in the argocd namespace.
+
+        ### Create the argocd namespace
+            kubectl create namespace argocd
+        
+        ### Install ArgoCD using ArgoCD Install manifest:
+            kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+        ### It will install all argocd components.
+
+        ### Expose ArgoCD Server with a Load Balancer
+            kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+            kubectl get svc -n argocd
+
+        ### Use the External-IP of argocd-server.Open https://<external-ip> in your browser.
+        
+        ### Get the Initial Admin Password
+            kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
+
+            ## Use below credentials as admin and password
+                username: admin
+                password: vcJLBbpU759hSE2Q
+
+    ![ArgoCD-UI]()
+    
+
+
+
+
+
