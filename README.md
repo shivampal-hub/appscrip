@@ -78,7 +78,7 @@ We can also use NodePort(used to expose app to external clients without Load Bal
     kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
     kubectl get svc -n argocd
 
-### Use the External-IP of argocd-server.Open https://<external-ip> in your browser.
+### Use the External-IP of argocd-server.Open https://external-ip in your browser.
         
 ### Get the Initial Admin Password
     kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 --decode
