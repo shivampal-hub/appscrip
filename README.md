@@ -1,7 +1,7 @@
 # 1. Provision AWS EKS Cluster using Terraform
 
-    This Project involves AWS EKS Provisioning using Terraform.
-    Here we are using Terraform modules to provision a clean and reusable Infrastructure for EKS Cluster.
+### This Project involves AWS EKS Provisioning using Terraform.
+### Here we are using Terraform modules to provision a clean and reusable Infrastructure for EKS Cluster.
 
 ## Terraform Module Structure
 ![Terraform Module Structure](ss/module_structure.png)
@@ -28,7 +28,7 @@
     terraform apply
 
 ### Access the Cluster
-    Using Output file we get the below command which we use to access our cluster
+### Using Output file we get the below command which we use to access our cluster
 ![kube-config Output](ss/kube-config-output.png)
     aws eks update-kubeconfig --region us-east-1 --name eks-cluster-1
 
@@ -39,13 +39,14 @@
 
 # 2. Deploy an NGINX Application using a Kubernetes Manifest
 
-    This project involves deploying nginx application using kubernetes manifests.In our case we would be creating two manifest files:
+### This project involves deploying nginx application using kubernetes manifests.In our case we would be creating two manifest files:
     - "nginx-deployment.yaml"
     - "nginx-service.yaml"
 
 ![nginx-deployment.yaml](ss/nginx-deployment.png)
 
 ![nginx-service.yaml](ss/nginx-service.png)
+
 Since we need to expose our service to the outer world , hence we are using LoadBalancer as a service instead of NodePort.
 We can also use NodePort(used to expose app to external clients without Load Balancing) or ClusterIP(used for pod to pod communication within the cluster) as a service.
 
@@ -63,8 +64,8 @@ We can also use NodePort(used to expose app to external clients without Load Bal
 ### Nginx Application is successfully deployed using Kubernetes Manifest.
 
 # 3. Set Up ArgoCD on EKS to deploy NGINX application
-    Firstly we need to setup and install ARGOCD in our cluster.
-### Install ArgoCD in the argocd namespace.
+###  Firstly we need to setup and install ARGOCD in our cluster.
+###  Install ArgoCD in the argocd namespace.
 
 ### Create the argocd namespace
     kubectl create namespace argocd
@@ -110,7 +111,9 @@ Now we need to create ArgoCD Application using below Manifest
 ![](ss/argocdapp-output.png)
 ### Once we hit the Load Balancer URL in our browser , we get below application up and running. 
 ![](ss/website-output.png)
+ExternalIP(public access URL for NGINX) - http://a3ac12dd7a37d4338a40335292a023b2-96490910.us-east-1.elb.amazonaws.com/
 
+### Now we can successfully access our NGINX Application.
 
 
 
